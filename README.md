@@ -42,15 +42,16 @@ GIRAR DERECHA/IZQUIERDA
   Para girar basta con que una rueda gire más rápido que la otra ó incluso que giren en sentido contrario (así sería un angulo de giro más cerrado).
   Se pueden hacer dos acciones: girar sin desplazarse y girar desplazandose:
   
-  ###### PSEUDOCODIGO
-  VOID GIRAR (sentido_giro, cuanto)
-    REPETIR *cuanto*    //ver cuanto giramos: grados, tiempo...
-      En funcioón del *sentido* establecer sentido de la corriente    //según se gire una rueda debe estar frenada (No corriente)
+    ###### PSEUDOCODIGO
+    VOID GIRAR (sentido_giro, cuanto)
+      REPETIR *cuanto*    //ver cuanto giramos: grados, tiempo...
+        En funcioón del *sentido* establecer sentido de la corriente    //según se gire una rueda debe estar frenada (No corriente)
       
-  VOID GIRAR AVANZANDO (sentido_giro, velocidad, cuanto)
-    REPETIR *cuanto*
-      En funcion del *sentido* establecer sentido de la corriente   //en este caso ambas ruedas deben girar porque también avanza
-      Establecer la velocidad de ambas ruedas    // deben girar las dos pero una más rápido que la otra
+      
+    VOID GIRAR AVANZANDO (sentido_giro, velocidad, cuanto)
+      REPETIR *cuanto*
+        En funcion del *sentido* establecer sentido de la corriente   //en este caso ambas ruedas deben girar porque también avanza
+        Establecer la velocidad de ambas ruedas    // deben girar las dos pero una más rápido que la otra
       
 
   * Girar cámara
