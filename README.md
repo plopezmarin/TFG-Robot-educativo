@@ -21,8 +21,6 @@ TFG mBot
   - SI (sigue-lineas == 11) *Accion: avanzar*
     
     
-  
-  ### Cámara
 
 ## ACCIONES
 FREANAR
@@ -45,16 +43,25 @@ GIRAR DERECHA/IZQUIERDA
   
     PSEUDOCODIGO
     
-    VOID GIRAR (sentido_giro, cuanto)
+    FUNCION GIRAR (sentido_giro, cuanto)
       REPETIR *cuanto*    //ver cuanto giramos: grados, tiempo...
         En funcioón del *sentido* establecer sentido de la corriente    //según se gire una rueda debe estar frenada (No corriente)
       
       
-    VOID GIRAR AVANZANDO (sentido_giro, velocidad, cuanto)
+    FUNCION GIRAR AVANZANDO (sentido_giro, velocidad, cuanto)
       REPETIR *cuanto*
         En funcion del *sentido* establecer sentido de la corriente   //en este caso ambas ruedas deben girar porque también avanza
         Establecer la velocidad de ambas ruedas    // deben girar las dos pero una más rápido que la otra
       
+GIRAR CAMARA
 
-  * Girar cámara
-  * Grabar o hacer foto
+    FUNCION GIRAR CAMARA (sentido, cuanto)
+      Establecer snetido de giro
+      Girar lo que se indique *cuanto*
+
+GRABAR VIDEO/ HACER FOTO
+
+    FUNCION GRABAR VIDEO (duracion)
+      Iniciar la grabacion cuando se invoque  
+      Grabar tiempo indicado
+      Devolver video
