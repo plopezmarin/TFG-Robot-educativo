@@ -31,7 +31,8 @@ FREANAR
 AVANZAR DELANTE/ATRÁS
     Para avanzar debemos ajustar ambos motores con la misma potencia y la misma velocidad, para cambiar el sentido basta con cambiar el sentido de la corriente en amboss motores.
     
-    ###### PSEUDOCODIGO
+    PSEUDOCODIGO
+    
     VOID AVANZAR (sentido, velocidad, tiempo)
       REPETIR *tiempo*  //ver como establecer cuanto avanzar, ya sea unidades de tiempo, revoluciones, distancia... 
         En funcion del *sentido* establecer el sentido de la corriente    //ambas ruedas igual
@@ -42,7 +43,8 @@ GIRAR DERECHA/IZQUIERDA
   Para girar basta con que una rueda gire más rápido que la otra ó incluso que giren en sentido contrario (así sería un angulo de giro más cerrado).
   Se pueden hacer dos acciones: girar sin desplazarse y girar desplazandose:
   
-    ###### PSEUDOCODIGO
+    PSEUDOCODIGO
+    
     VOID GIRAR (sentido_giro, cuanto)
       REPETIR *cuanto*    //ver cuanto giramos: grados, tiempo...
         En funcioón del *sentido* establecer sentido de la corriente    //según se gire una rueda debe estar frenada (No corriente)
