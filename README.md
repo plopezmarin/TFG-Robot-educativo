@@ -14,12 +14,16 @@ TFG mBot
   * Si esta fuera por completo, devuelve 00
   * Si esta en la línea, devuelve 11
 
-  ###### PSEUDOCODIGO
-  - SI (sigue-lineas == 01) Accion: *girar derecha*
-  - SI (sigue-lineas == 10) Accion: *girar izquierda*
-  - SI (sigue-lineas == 00) Accion: *Frenar*
-  - SI (sigue-lineas == 11) Accion: *Avanzar*
-      
+        PSEUDOCODIGO
+        
+        FUNCION SEGUIR LINEA (Condicion finalizacion)
+          SI (sigue-lineas == 01) Accion: *girar derecha*
+          SI (sigue-lineas == 10) Accion: *girar izquierda*
+          SI (sigue-lineas == 00) Accion: *Frenar*
+          SI (sigue-lineas == 11) Accion: *Avanzar*
+        //Condicion de finalizacion puede ser por tiempo o algun evento como que deja de encontrar linea (00)
+        
+        //OTRA OPCION: El usuario define este algoritmo, pero se le proporcionaría una abstracción de las funciones de lectura de los sensores y del control del motor, de tal modo que solo tenga que ver que devuelve el sensor y poner el sentido de giro
     
 
 ## ACCIONES
@@ -65,3 +69,6 @@ GRABAR VIDEO/ HACER FOTO
       Iniciar la grabacion cuando se invoque  
       Grabar tiempo indicado
       Devolver video
+      
+## MANDO
+Para controlar el mBot, se pueden reutilizar las funciones mencionadas.
