@@ -15,10 +15,10 @@ TFG mBot
   * Si esta en la línea, devuelve 11
 
   #### PSEUDOCODIGO
-  SI (sigue-lineas == 01) *Accion: girar derecha*
-  SI (sigue-lineas == 10) *Accion: girar izquierda*
-  SI (sigue-lineas == 00) *Accion: Parar*
-  SI (sigue-lineas == 11) *Accion: avanzar*
+  - SI (sigue-lineas == 01) *Accion: girar derecha*
+  - SI (sigue-lineas == 10) *Accion: girar izquierda*
+  - SI (sigue-lineas == 00) *Accion: Parar*
+  - SI (sigue-lineas == 11) *Accion: avanzar*
     
     
   
