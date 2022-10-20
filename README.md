@@ -2,12 +2,12 @@
 TFG mBot
 
 
-#SENSORES
+## SENSORES
   * Ultrasonidos
   * Sigue-lineas
   * Cámara
 
-# ACCIONES
+## ACCIONES
   * Avanzar delante/atrás:
     * Velocidad
     * Cuanto avanzar
