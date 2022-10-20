@@ -13,6 +13,8 @@ TFG mBot
     * Simétrico para la dercha
     * Si esta fuera por completo, devuelve 00
     * Si esta en la línea, devuelve 11
+    
+    
   
   ### Cámara
 
