@@ -25,10 +25,10 @@ TFG mBot
   ### Cámara
 
 ## ACCIONES
-  * Parar:
+FREANAR
     Básicamenete es poner ambos motores a 0V de tensión para que dejen de girar
     
-  * Avanzar delante/atrás:
+AVANZAR DELANTE/ATRÁS
     Para avanzar debemos ajustar ambos motores con la misma potencia y la misma velocidad, para cambiar el sentido basta con cambiar el sentido de la corriente en amboss motores.
     
     ###### PSEUDOCODIGO
@@ -38,7 +38,7 @@ TFG mBot
         Establecer la velocidad de ambas ruedas   //debe ser la misma
       
     
-  * Girar izquierda/derecha:
+GIRAR DERECHA/IZQUIERDA
   Para girar basta con que una rueda gire más rápido que la otra ó incluso que giren en sentido contrario (así sería un angulo de giro más cerrado).
   Se pueden hacer dos acciones: girar sin desplazarse y girar desplazandose:
   
