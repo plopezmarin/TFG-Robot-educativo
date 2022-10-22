@@ -23,7 +23,7 @@ TFG mBot
           SI (sigue-lineas == 11) Accion: *Avanzar*
         //Condicion de finalizacion puede ser por tiempo o algun evento como que deja de encontrar linea (00)
         
-        //OTRA OPCION: El usuario define este algoritmo, pero se le proporcionaría una abstracción de las funciones de lectura de los sensores y del control del motor, de tal modo que solo tenga que ver que devuelve el sensor y poner el sentido de giro
+        //OTRA OPCION: El usuario define este algoritmo, pero se le proporcionaría una abstracción de las funciones de lectura de los sensores y del control del motor, de tal modo que solo tenga que ver que devuelve el sensor y poner el sentido de giro.
     
 
 ## ACCIONES
@@ -69,6 +69,23 @@ GRABAR VIDEO/ HACER FOTO
       Iniciar la grabacion cuando se invoque  
       Grabar tiempo indicado
       Devolver video
+
+*Está la opción también de que el usuario pueda controlar los motores de forma independiente pudiendo ajustar la velocidad de cada uno de estos.
       
 ## MANDO
 Para controlar el mBot, se pueden reutilizar las funciones mencionadas.
+
+
+## LIBRERIA DE FUNCIONES
+  * Lectura_ultrasonidos();
+  * Lectura_sigueLineas();
+  * Seguir_linea( parar );
+  * Frenar ();
+  * Avanzar (sentido, cuanto);
+  * Girar (sentido, cuanto);
+  * Girar Avanzando (Sentido, cuanto);
+  * Control_motor (motor, velocidad);     //Controlar cada motor; el parametro motor, para indicar cual de los dos
+  * Mover_camara(sentido, cuanto, velocidad);
+  * Capturar_video();
+  * Capturar_foto();
+
