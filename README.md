@@ -88,4 +88,5 @@ Para controlar el mBot, se pueden reutilizar las funciones mencionadas.
   * Mover_camara(sentido, cuanto, velocidad);
   * Capturar_video();
   * Capturar_foto();
+  * Encender led (color);
 
