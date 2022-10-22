@@ -6,6 +6,9 @@ TFG mBot
   ### Ultrasonidos
   Para este caso considero crear una función que nos devueelva la distancia hasta el objeto, de este modo podrá usarse en condicionales y umbrales.
   
+  ### Sensor de Luz
+  Lo mismo que el anterior.
+  
   ### Sigue-lineas
   Este hará uso de las funciones para las diferentes acciones. Básicamente si detecta que se sale hacia la izquierda *girar a la derecha* y viceversa, en caso de ir bien *avanzar*.
   Por lo que veo este tipo de sensor funciona devolviendo 0 si se sale y 1 si va por la línea. Lo hace de la siguiente forma:
@@ -89,4 +92,5 @@ Para controlar el mBot, se pueden reutilizar las funciones mencionadas.
   * Capturar_video();
   * Capturar_foto();
   * Encender led (color);
+  * Lectura_sensorLuz();
 
