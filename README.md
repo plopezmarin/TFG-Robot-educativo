@@ -76,7 +76,7 @@ GRABAR VIDEO/ HACER FOTO
 *Está la opción también de que el usuario pueda controlar los motores de forma independiente pudiendo ajustar la velocidad de cada uno de estos.
       
 ## MANDO
-Para controlar el mBot, se pueden reutilizar las funciones mencionadas.
+Se puede añadir una función que compruebe y devuelva la posición del joystick para que el usuario mediante condicionales y haciendo uso de las funciones antes mencionadas programe su funcionamiento.
 
 
 ## LIBRERIA DE FUNCIONES
@@ -93,4 +93,5 @@ Para controlar el mBot, se pueden reutilizar las funciones mencionadas.
   * Capturar_foto();
   * Encender led (color);
   * Lectura_sensorLuz();
+  * Posición_Joystick();    // Devuelve la posición del joystick
 
