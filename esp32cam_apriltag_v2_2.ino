@@ -38,11 +38,14 @@ struct accion_tag {
   char movimiento;
   int parametro1;
   int parametro2;
+  double x;
+  double y;
+  double z;
 } Accion;
 
 
 //FUNCION PARA ESTABLECER LA CONEXION
-void inicia_comunicacion(const int timeout, int tag) {
+void inicia_comunicacion(const int timeout, int tag, double x, double y, double z) {
   if (flag_fin_accion = true) {
     digitalWrite(12, HIGH);
     delay(5);
@@ -50,10 +53,10 @@ void inicia_comunicacion(const int timeout, int tag) {
     flag_fin_accion = false;
     int ack = espera_ACK(timeout);
     if (ack == 0) {
-      comunicacion(timeout, tag);
+      comunicacion(timeout, tag, x, y, z);
     } else if (ack == 1) {
       //error
-      comunicacion(timeout, tag);
+      comunicacion(timeout, tag,x,y,z);
     }
   }
   flag_fin_accion = false;
@@ -111,12 +114,12 @@ uint8_t Checksum(const byte *datos, size_t longitud) {
 }
 
 
-void comunicacion(const int timeout, int tag) {
+void comunicacion(const int timeout, int tag, double x, double y, double z) {
   int end;
   switch (tag) {
     case 0:
       {
-        accion_tag msj{ 'F', 75, 5 };
+        accion_tag msj{ 'F', 75, 5, x, y, z };
         envia_movimiento((byte *)&msj, sizeof(msj));
         end = termina_comunicacion(timeout);
         if (end == 1) envia_movimiento((byte *)&msj, sizeof(msj));
@@ -125,7 +128,7 @@ void comunicacion(const int timeout, int tag) {
 
     case 1:
       {
-        accion_tag msj2{ 'B', 50, 5 };
+        accion_tag msj2{ 'B', 50, 5, x, y, z };
         envia_movimiento((byte *)&msj2, sizeof(msj2));
         end = termina_comunicacion(timeout);
         if (end == 1) envia_movimiento((byte *)&msj2, sizeof(msj2));
@@ -134,7 +137,7 @@ void comunicacion(const int timeout, int tag) {
 
     case 2:
       {
-        accion_tag msj3{ 'L', 5, 5 };
+        accion_tag msj3{ 'L', 65, 5, x, y, z  };
         envia_movimiento((byte *)&msj3, sizeof(msj3));
         end = termina_comunicacion(timeout);
         if (end == 1) envia_movimiento((byte *)&msj3, sizeof(msj3));
@@ -143,7 +146,7 @@ void comunicacion(const int timeout, int tag) {
 
     case 3:
       {
-        accion_tag msj4{ 'R', 5, 5 };
+        accion_tag msj4{ 'R', 65, 5, x, y, z  };
         envia_movimiento((byte *)&msj4, sizeof(msj4));
         end = termina_comunicacion(timeout);
         if (end == 1) envia_movimiento((byte *)&msj4, sizeof(msj4));
@@ -152,7 +155,7 @@ void comunicacion(const int timeout, int tag) {
 
     case 4:
       {
-        accion_tag msj5{ 'S', 0, 0 };
+        accion_tag msj5{ 'S', 0, 0, x, y, z  };
         envia_movimiento((byte *)&msj5, sizeof(msj5));
         end = termina_comunicacion(timeout);
         if (end == 1) envia_movimiento((byte *)&msj5, sizeof(msj5));
@@ -224,10 +227,11 @@ void setup() {
   info.cy = cy;*/
 
   //INTERRUPCIONES PARA EL PROTOCOLO
-  pinMode(12, OUTPUT);  //pin para avisar al ESP32
+  //pinMode(12, OUTPUT);  //pin para avisar al ESP32
 }
 
 void loop() {
+double x,y,z=999;  
   tagid = 11;
 
   camera_fb_t *fb = esp_camera_fb_get();
@@ -236,6 +240,13 @@ void loop() {
     return;
   }
 
+    //Estrutura para detector de la pose:
+  apriltag_detection_info_t info;
+  info.tagsize = 0.113;  //tamaño en metros - revisar
+  info.fx = 150;
+  info.fy = 150;
+  info.cx = 160;  //(320x240) FRAMESIZE_QQVGA
+  info.cy = 120;
 
   //image_u8_t *im = image_u8_create_stride(fb->width, fb->height, fb->width);
   image_u8_t im = {
@@ -255,13 +266,28 @@ void loop() {
     zarray_get(detections, i, &det);
 
     // Hacer cosas con las detecciones aquí
+    info.det = det;
+    apriltag_pose_t pose;
+    double err = estimate_tag_pose(&info, &pose);
 
-    tagid = det->id;
+    //Seleccionar tag más cercano
+    if (pose.t->data[2] < z) {
+      x = pose.t->data[0];
+      y = pose.t->data[1];
+      z = pose.t->data[2];
+      tagid = det->id;
+    }
+
+    //inicia_comunicacion(500, tagid, x, y, z);
   }
+
   //Serial.print(tagid);
   if (tagid < 9) {
     flag_fin_accion == true;
-    inicia_comunicacion(500, tagid);
+    //double x = pose.t->data[0];
+    //double y = pose.t->data[1];
+    //double z = pose.t->data[2];
+    inicia_comunicacion(500, tagid, x, y, z);
   }
 
   tagid = 10;
