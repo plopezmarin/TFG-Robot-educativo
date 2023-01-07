@@ -33,11 +33,11 @@ void establecimiento_conexion(byte *estruc_datos, const uint8_t longitud, const 
 /*Finaliza la comunicacion*/
 void fin_comunicacion(int timeout);
 
-/*Tras recibir los datos en lectura_datos, esta función los procesa y manda a los motores
+/*Tras recibir los datos en lectura_datos, esta funciÃ³n los procesa y manda a los motores
 la accion correspondiente*/
 void ejecuta_accion();
 
-/*Tras establecer la conexion, cuando vuelve a haber datos en el puerto serie, esta función
+/*Tras establecer la conexion, cuando vuelve a haber datos en el puerto serie, esta funciÃ³n
 los lee: Si es 'STX' procede a leer el movimiento recibido y comrpobar el checksum y el caracter
 'ETX'. En cualquier caso de error responde con un 'NAK'*/
 int lectura_datos(byte *estruc_datos, uint8_t longitud_estructura, int timeout);
